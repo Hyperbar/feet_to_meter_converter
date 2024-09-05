@@ -42,16 +42,18 @@ while True:
         case sg.WIN_CLOSED:
             break
 
+    try:
+        # Convert the input values to float
+        feet = float(value["feet"])
+        inches = float(value["inches"])
 
-    # Convert the input values to float
-    feet = float(value["feet"])
-    inches = float(value["inches"])
+        # Call the make_conversion function to convert feet and inches to meters
+        conversion = make_conversion(feet, inches)
 
-    # Call the make_conversion function to convert feet and inches to meters
-    conversion = make_conversion(feet, inches)
+        # Update the output text element with the conversion result
+        window["output"].update(value=f"{conversion} m", text_color="white")
+    except:
+         sg.popup("Please provide two numbers")
 
-    # Update the output text element with the conversion result
-    window["output"].update(value=f"{conversion} m", text_color="white")
-
-    # Close the window when the loop exits
+# Close the window when the loop exits
 window.close()
